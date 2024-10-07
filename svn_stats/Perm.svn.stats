@@ -1,0 +1,17 @@
+===-------------------------------------------------------------------------===
+                          ... Statistics Collected ...
+===-------------------------------------------------------------------------===
+
+ 1 aa               - Number of MayAlias results
+36 aa               - Number of MustAlias results
+50 aa               - Number of NoAlias results
+65 bitcode-reader   - Number of Metadata records loaded
+ 7 bitcode-reader   - Number of MDStrings loaded
+ 4 capture-tracking - Number of pointers not captured before
+30 gvn              - Number of instructions deleted
+24 gvn              - Number of loads deleted
+ 1 gvn              - Number of instructions simplified
+ 1 memdep           - Number of block queries that were completely cached
+37 memdep           - Number of fully cached non-local ptr responses
+27 memdep           - Number of uncached non-local ptr responses
+

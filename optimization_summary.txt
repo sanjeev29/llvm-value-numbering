@@ -1,0 +1,6 @@
+===-------------------------------------------------------------------------=== 
+		 ... Overall Statistics ...
+===-------------------------------------------------------------------------===
+Total number of instructions deleted by lvn: 915
+Total number of instructions deleted by svn: 933
+Total number of instructions deleted by gvn: 970

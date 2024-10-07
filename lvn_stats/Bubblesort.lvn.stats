@@ -1,0 +1,18 @@
+===-------------------------------------------------------------------------===
+                          ... Statistics Collected ...
+===-------------------------------------------------------------------------===
+
+ 14 aa               - Number of MayAlias results
+ 37 aa               - Number of MustAlias results
+164 aa               - Number of NoAlias results
+ 38 basicaa          - Number of times a GEP is decomposed
+ 65 bitcode-reader   - Number of Metadata records loaded
+  7 bitcode-reader   - Number of MDStrings loaded
+  3 capture-tracking - Number of pointers not captured before
+ 39 gvn              - Number of instructions deleted
+ 32 gvn              - Number of loads deleted
+  4 memdep           - Number of block queries that were completely cached
+  1 memdep           - Number of cached, but dirty, non-local ptr responses
+ 87 memdep           - Number of fully cached non-local ptr responses
+ 95 memdep           - Number of uncached non-local ptr responses
+
