@@ -42,6 +42,10 @@
 #include "llvm/Analysis/PHITransAddr.h"
 #include "llvm/Analysis/TargetLibraryInfo.h"
 #include "llvm/Analysis/ValueTracking.h"
+
+// Custom Extended Basic Block Analysis
+#include "llvm/Analysis/EBBAnalysis.h"
+
 #include "llvm/IR/Attributes.h"
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/Constant.h"
@@ -778,6 +782,13 @@ PreservedAnalyses GVNPass::run(Function &F, FunctionAnalysisManager &AM) {
   auto &LI = AM.getResult<LoopAnalysis>(F);
   auto *MSSA = AM.getCachedResult<MemorySSAAnalysis>(F);
   auto &ORE = AM.getResult<OptimizationRemarkEmitterAnalysis>(F);
+  auto &EBBs = AM.getResult<EBBAnalysis>(F);
+
+  this->EBBs = EBBs;
+
+  // Dump Extended Basic Blocks
+  if (GVNEnableSVN)
+      dumpExtendedBasicBlocks(F, AM);
 
   bool Changed;
 
@@ -796,38 +807,8 @@ PreservedAnalyses GVNPass::run(Function &F, FunctionAnalysisManager &AM) {
   return PA;
 }
 
-std::vector<std::vector<BasicBlock*>> GVNPass::identifyExtendedBasicBlocks(Function &F) {
-    std::vector<std::vector<BasicBlock*>> EBBs;
-    std::vector<BasicBlock*> currentEBB;
-
-    for (BasicBlock &BB : F) {
-        // If currentEBB is empty, that means the current BB is an entry block, which is an EBB or
-        // if the current BB has a single predecessor, which is the latest BB in currentEBB, consider that as an EBB
-        if (currentEBB.empty() || BB.getSinglePredecessor() == currentEBB.back()) {
-            currentEBB.push_back(&BB);
-        } else {
-            // Finalize current EBB
-            if (!currentEBB.empty()) {
-                EBBs.push_back(currentEBB);
-
-                // Clear currentEBB list
-                currentEBB.clear();
-            }
-
-            // Add current BB to a new currentEBB
-            currentEBB.push_back(&BB);
-        }
-    }
-
-    // Add remaining currentEBB to EBBs
-    if (!currentEBB.empty())
-        EBBs.push_back(currentEBB);
-
-    return EBBs;
-}
-
-void GVNPass::dumpExtendedBasicBlocks(Function &F) {
-    std::vector<std::vector<BasicBlock*>> EBBs = identifyExtendedBasicBlocks(F);
+void GVNPass::dumpExtendedBasicBlocks(Function &F, FunctionAnalysisManager &AM) {
+    Module *M = F.getParent();
 
     // Get module's original source file name
     StringRef inputFileName = F.getParent()->getName();
@@ -845,17 +826,23 @@ void GVNPass::dumpExtendedBasicBlocks(Function &F) {
         return;
     }
 
-    outputFile << F.getName() << ":\n";
-    for (const auto &EBB : EBBs) {
-        outputFile << " {";
-        for (size_t i = 0; i < EBB.size(); i++) {
-            outputFile << EBB[i]->getName();
+    for (Function &F : *M) {
+        outputFile << F.getName() << ":\n";
 
-            if (i != EBB.size() - 1)
-                outputFile << ", ";
-        }
+        // Get the EBB analysis result for this function
+        auto &EBBs = AM.getResult<EBBAnalysis>(F);
 
-        outputFile << "}\n";
+        for (const auto &EBB : EBBs) {
+            outputFile << " {";
+            for (size_t i = 0; i < EBB.size(); i++) {
+                outputFile << EBB[i]->getName();
+
+                if (i != EBB.size() - 1)
+                    outputFile << ", ";
+            }
+            outputFile << "}\n";
+      }
+      outputFile << "\n";
     }
 
     outputFile.close();
@@ -2804,10 +2791,6 @@ bool GVNPass::runImpl(Function &F, AssumptionCache &RunAC, DominatorTree &RunDT,
       }
   }
 
-  // Dump Extended Basic Blocks
-  if (GVNEnableSVN)
-      dumpExtendedBasicBlocks(F);
-
   unsigned Iteration = 0;
   while (ShouldContinue) {
     LLVM_DEBUG(dbgs() << "GVN iteration: " << Iteration << "\n");
@@ -3188,9 +3171,6 @@ bool GVNPass::iterateOnFunction(Function &F) {
   bool Changed = false;
 
   if (GVNEnableSVN) {
-      // Superlocal Value Numbering
-      std::vector<std::vector<BasicBlock*>> EBBs = identifyExtendedBasicBlocks(F);
-
       for (const auto &EBB : EBBs) {
           for (BasicBlock *BB : EBB)
             Changed |= processBlock(BB);

@@ -1,42 +1,20 @@
-Move:
- {entry}
-
 Initrand:
  {entry}
-
-Makenull:
- {entry}
-
-main:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
 
 Rand:
  {entry}
 
-Pop:
- {entry, if.then}
- {if.else, if.end}
- {return}
-
 Error:
+ {entry}
+
+printf:
+
+Makenull:
  {entry}
 
 Getelement:
  {entry, if.then}
  {if.else}
- {if.end}
-
-Init:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
-
-Towers:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end, if.then}
  {if.end}
 
 Push:
@@ -45,8 +23,32 @@ Push:
  {if.end7, if.then8}
  {if.end18}
 
+Init:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+Pop:
+ {entry, if.then}
+ {if.else, if.end}
+ {return}
+
+Move:
+ {entry}
+
 tower:
  {entry, if.then}
  {if.else}
  {if.end}
+
+Towers:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end, if.then}
+ {if.end}
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
 

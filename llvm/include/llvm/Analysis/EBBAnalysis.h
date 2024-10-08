@@ -11,17 +11,13 @@ class Function;
 class BasicBlock;
 
 class EBBAnalysis : public AnalysisInfoMixin<EBBAnalysis> {
+  friend AnalysisInfoMixin<EBBAnalysis>;
+  static AnalysisKey Key;
+
 public:
   using Result = std::vector<std::vector<BasicBlock*>>;
   Result run(Function &F, FunctionAnalysisManager &AM);
-
-private:
-  friend struct AnalysisInfoMixin<EBBAnalysis>;
-  static AnalysisKey Key;
 };
-
-/// Create a legacy EBBAnalysis pass.
-FunctionPass *createEBBAnalysisPass();
 
 } // end namespace llvm
 

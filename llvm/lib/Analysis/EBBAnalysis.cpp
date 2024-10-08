@@ -30,31 +30,3 @@ EBBAnalysis::Result EBBAnalysis::run(Function &F, FunctionAnalysisManager &AM) {
 
   return EBBs;
 }
-
-// Legacy pass implementation
-namespace {
-class EBBAnalysisLegacyPass : public FunctionPass {
-public:
-  static char ID;
-  EBBAnalysisLegacyPass() : FunctionPass(ID) {}
-
-  bool runOnFunction(Function &F) override {
-    // This is an analysis pass, so always return false as we're not
-    // transforming the function
-    return false;
-  }
-
-  void getAnalysisUsage(AnalysisUsage &AU) const override {
-    AU.setPreservesAll();
-  }
-};
-}
-
-char EBBAnalysisLegacyPass::ID = 0;
-static RegisterPass<EBBAnalysisLegacyPass>
-    X("ebb-analysis", "Extended Basic Block Analysis", false, true);
-
-// Public interface to the EBBAnalysis pass
-FunctionPass *llvm::createEBBAnalysisPass() {
-  return new EBBAnalysisLegacyPass();
-}

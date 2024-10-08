@@ -1,7 +1,22 @@
+Initrand:
+ {entry}
+
+Rand:
+ {entry}
+
+Swap:
+ {entry}
+
 Initialize:
  {entry}
  {for.cond, for.body, for.inc}
  {for.end}
+
+Permute:
+ {entry, if.then}
+ {for.cond, for.body, for.inc}
+ {for.end}
+ {if.end}
 
 Perm:
  {entry}
@@ -9,23 +24,10 @@ Perm:
  {for.end, if.then}
  {if.end}
 
-Swap:
- {entry}
+printf:
 
 main:
  {entry}
  {for.cond, for.body, for.inc}
  {for.end}
-
-Rand:
- {entry}
-
-Initrand:
- {entry}
-
-Permute:
- {entry, if.then}
- {for.cond, for.body, for.inc}
- {for.end}
- {if.end}
 

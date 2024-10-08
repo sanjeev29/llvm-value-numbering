@@ -1,3 +1,9 @@
+Initrand:
+ {entry}
+
+Rand:
+ {entry}
+
 Try:
  {entry}
  {while.cond, land.rhs}
@@ -8,11 +14,6 @@ Try:
  {if.end37}
  {while.end}
 
-Queens:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
-
 Doit:
  {entry}
  {while.cond, while.body, land.lhs.true, if.then}
@@ -22,14 +23,15 @@ Doit:
  {while.end, if.then17}
  {if.end18}
 
-main:
+printf:
+
+Queens:
  {entry}
  {for.cond, for.body, for.inc}
  {for.end}
 
-Initrand:
+main:
  {entry}
-
-Rand:
- {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
 

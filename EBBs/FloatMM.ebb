@@ -1,12 +1,8 @@
-rInnerproduct:
+Initrand:
  {entry}
- {for.cond, for.body, for.inc}
- {for.end}
 
-main:
+Rand:
  {entry}
- {for.cond, for.body, for.inc}
- {for.end}
 
 rInitmatrix:
  {entry}
@@ -14,6 +10,13 @@ rInitmatrix:
  {for.cond1, for.body3, for.inc}
  {for.end, for.inc8}
  {for.end10}
+
+rInnerproduct:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+llvm.fmuladd.f32:
 
 Mm:
  {entry}
@@ -23,9 +26,10 @@ Mm:
  {for.end8, if.then}
  {if.end}
 
-Rand:
- {entry}
+printf:
 
-Initrand:
+main:
  {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
 

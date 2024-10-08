@@ -1,4 +1,7 @@
-Uniform11:
+Initrand:
+ {entry}
+
+Rand:
  {entry}
 
 Cos:
@@ -9,12 +12,19 @@ Cos:
  {if.end8, for.inc}
  {for.end}
 
-Oscar:
+Min0:
+ {entry, if.then}
+ {if.else}
+ {return}
+
+Printcomplex:
  {entry}
- {for.cond, for.body, for.inc}
- {for.end}
- {for.cond5, for.body8, for.inc9}
- {for.end11}
+ {do.body, do.cond, do.end}
+
+printf:
+
+Uniform11:
+ {entry}
 
 Exptab:
  {entry}
@@ -22,21 +32,6 @@ Exptab:
  {for.end}
  {do.body}
  {do.body23, do.cond, do.end, do.cond63, do.end65}
-
-Rand:
- {entry}
-
-Printcomplex:
- {entry}
- {do.body, do.cond, do.end}
-
-Min0:
- {entry, if.then}
- {if.else}
- {return}
-
-Initrand:
- {entry}
 
 Fft:
  {entry}
@@ -46,6 +41,17 @@ Fft:
  {do.body84, do.cond90, do.end92, do.cond94, do.end96}
  {for.cond, for.body, for.inc}
  {for.end}
+
+llvm.fmuladd.f32:
+
+llvm.memcpy.p0.p0.i64:
+
+Oscar:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+ {for.cond5, for.body8, for.inc9}
+ {for.end11}
 
 main:
  {entry}

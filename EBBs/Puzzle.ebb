@@ -1,16 +1,5 @@
-main:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
-
 Initrand:
  {entry}
-
-Remove:
- {entry}
- {for.cond, for.body, if.then}
- {if.end, for.inc}
- {for.end}
 
 Rand:
  {entry}
@@ -23,16 +12,6 @@ Fit:
  {for.end}
  {return}
 
-Trial:
- {entry}
- {for.cond, for.body, if.then, if.then4, lor.lhs.false}
- {if.then9}
- {if.else, if.end}
- {if.end10}
- {if.end11, for.inc}
- {for.end}
- {return}
-
 Place:
  {entry}
  {for.cond, for.body, if.then}
@@ -41,6 +20,22 @@ Place:
  {for.cond15, for.body17, if.then21}
  {if.end22, for.inc23}
  {for.end25}
+ {return}
+
+Remove:
+ {entry}
+ {for.cond, for.body, if.then}
+ {if.end, for.inc}
+ {for.end}
+
+Trial:
+ {entry}
+ {for.cond, for.body, if.then, if.then4, lor.lhs.false}
+ {if.then9}
+ {if.else, if.end}
+ {if.end10}
+ {if.end11, for.inc}
+ {for.end}
  {return}
 
 Puzzle:
@@ -140,4 +135,11 @@ Puzzle:
  {if.else357, if.then359}
  {if.end361}
  {if.end362}
+
+printf:
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
 

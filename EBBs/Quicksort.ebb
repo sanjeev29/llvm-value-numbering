@@ -1,18 +1,8 @@
 Initrand:
  {entry}
 
-main:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
-
 Rand:
  {entry}
-
-Quick:
- {entry, lor.lhs.false}
- {if.then}
- {if.end}
 
 Initarr:
  {entry}
@@ -32,4 +22,16 @@ Quicksort:
  {if.end, do.cond, do.end, if.then23}
  {if.end24, if.then26}
  {if.end27}
+
+Quick:
+ {entry, lor.lhs.false}
+ {if.then}
+ {if.end}
+
+printf:
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
 

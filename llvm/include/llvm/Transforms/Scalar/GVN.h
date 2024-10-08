@@ -30,6 +30,8 @@
 #include <utility>
 #include <vector>
 
+#include "llvm/Analysis/EBBAnalysis.h"
+
 namespace llvm {
 
 class AAResults;
@@ -116,6 +118,9 @@ struct GVNOptions {
 /// this particular pass here.
 class GVNPass : public PassInfoMixin<GVNPass> {
   GVNOptions Options;
+
+  // DenseMap<Function*, EBBAnalysis::Result> EBBResults;
+  EBBAnalysis::Result EBBs;
 
 public:
   struct Expression;
@@ -374,8 +379,7 @@ private:
   void assignBlockRPONumber(Function &F);
   
   // SVN Helper Functions
-  std::vector<std::vector<BasicBlock*>> identifyExtendedBasicBlocks(Function &F);
-  void dumpExtendedBasicBlocks(Function &F);
+  void dumpExtendedBasicBlocks(Function &F, FunctionAnalysisManager &AM);
 };
 
 /// Create a legacy GVN pass. This also allows parameterizing whether or not

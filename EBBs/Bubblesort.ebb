@@ -1,3 +1,17 @@
+Initrand:
+ {entry}
+
+Rand:
+ {entry}
+
+bInitarr:
+ {entry}
+ {for.cond, for.body, if.then}
+ {if.else, if.then13}
+ {if.end}
+ {if.end16, for.inc}
+ {for.end}
+
 Bubble:
  {entry}
  {while.cond, while.body}
@@ -8,22 +22,10 @@ Bubble:
  {if.then21}
  {if.end22}
 
+printf:
+
 main:
  {entry}
  {for.cond, for.body, for.inc}
  {for.end}
-
-bInitarr:
- {entry}
- {for.cond, for.body, if.then}
- {if.else, if.then13}
- {if.end}
- {if.end16, for.inc}
- {for.end}
-
-Rand:
- {entry}
-
-Initrand:
- {entry}
 

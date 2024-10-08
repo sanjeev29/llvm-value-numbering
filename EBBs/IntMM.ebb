@@ -1,20 +1,8 @@
 Initrand:
  {entry}
 
-main:
- {entry}
- {for.cond, for.body, for.inc}
- {for.end}
-
 Rand:
  {entry}
-
-Intmm:
- {entry}
- {for.cond, for.body}
- {for.cond1, for.body3, for.inc}
- {for.end, for.inc6}
- {for.end8}
 
 Initmatrix:
  {entry}
@@ -24,6 +12,20 @@ Initmatrix:
  {for.end9}
 
 Innerproduct:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+Intmm:
+ {entry}
+ {for.cond, for.body}
+ {for.cond1, for.body3, for.inc}
+ {for.end, for.inc6}
+ {for.end8}
+
+printf:
+
+main:
  {entry}
  {for.cond, for.body, for.inc}
  {for.end}
