@@ -1,0 +1,54 @@
+Uniform11:
+ {entry}
+
+Cos:
+ {entry}
+ {for.cond, for.body, if.then, if.then5}
+ {if.else}
+ {if.end}
+ {if.end8, for.inc}
+ {for.end}
+
+Oscar:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+ {for.cond5, for.body8, for.inc9}
+ {for.end11}
+
+Exptab:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+ {do.body}
+ {do.body23, do.cond, do.end, do.cond63, do.end65}
+
+Rand:
+ {entry}
+
+Printcomplex:
+ {entry}
+ {do.body, do.cond, do.end}
+
+Min0:
+ {entry, if.then}
+ {if.else}
+ {return}
+
+Initrand:
+ {entry}
+
+Fft:
+ {entry}
+ {do.body}
+ {do.body1}
+ {do.body2, do.cond, do.end, do.cond81, do.end83}
+ {do.body84, do.cond90, do.end92, do.cond94, do.end96}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+

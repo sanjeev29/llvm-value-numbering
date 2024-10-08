@@ -1,0 +1,31 @@
+rInnerproduct:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+rInitmatrix:
+ {entry}
+ {for.cond, for.body}
+ {for.cond1, for.body3, for.inc}
+ {for.end, for.inc8}
+ {for.end10}
+
+Mm:
+ {entry}
+ {for.cond, for.body}
+ {for.cond1, for.body3, for.inc}
+ {for.end, for.inc6}
+ {for.end8, if.then}
+ {if.end}
+
+Rand:
+ {entry}
+
+Initrand:
+ {entry}
+

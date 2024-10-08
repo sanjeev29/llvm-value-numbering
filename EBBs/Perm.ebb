@@ -1,0 +1,31 @@
+Initialize:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+Perm:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end, if.then}
+ {if.end}
+
+Swap:
+ {entry}
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+Rand:
+ {entry}
+
+Initrand:
+ {entry}
+
+Permute:
+ {entry, if.then}
+ {for.cond, for.body, for.inc}
+ {for.end}
+ {if.end}
+

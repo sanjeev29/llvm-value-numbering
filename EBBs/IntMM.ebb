@@ -1,0 +1,30 @@
+Initrand:
+ {entry}
+
+main:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
+Rand:
+ {entry}
+
+Intmm:
+ {entry}
+ {for.cond, for.body}
+ {for.cond1, for.body3, for.inc}
+ {for.end, for.inc6}
+ {for.end8}
+
+Initmatrix:
+ {entry}
+ {for.cond, for.body}
+ {for.cond1, for.body3, for.inc}
+ {for.end, for.inc7}
+ {for.end9}
+
+Innerproduct:
+ {entry}
+ {for.cond, for.body, for.inc}
+ {for.end}
+
